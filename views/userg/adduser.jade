@@ -1,0 +1,50 @@
+form.form-horizontal(no-validate  name="usergform")
+ div.alert.alert-danger(ng-if="errflag")
+           div(ng-repeat="error in errors") {{error.msg}}
+ div.alert.alert-success(ng-if="sflag") {{success}}
+
+ div.form-group
+     label.col-sm-2(for="usergname") Group Name
+     div.col-sm-10
+       input#usergname.form-control(type='text' placeholder='User Group Name' name='ugname' required ng-model="userg.name")
+       br
+       div(ng-show="usergform.ugname.$touched || usergform.$submitted") 
+         span(ng-show="usergform.ugname.$invalid") #{error_name}
+    
+ div.form-group
+     label.col-sm-2(for="usergname") Access Rights
+     div.col-sm-10
+           if rights
+            div.scrollbox
+              for item,index in rights
+                     - var chk=item;
+                         p  
+                           
+                             input(type='checkbox' name='arights' data-val=chk.indexOf(arights)  value=item )  
+                             span=item 
+            <a href='javascript:void(0)' onclick="checkAll(true,'arights')">#{text_select_all}</a> &nbsp; <a href='javascript:void(0)' onclick="checkAll(false,'arights')">#{text_unselect_all}</a>
+                             
+ div.form-group
+     label.col-sm-2(for="usergname") Modify Rights
+     div.col-sm-10
+          if rights
+            div.scrollbox
+              for item in rights
+                     - var chk=item;
+                         p  
+                           
+                             input(type='checkbox' name='mrights'   value=item )  
+                             span=item
+        
+        
+       
+             <a href='javascript:void(0)' onclick="checkAll(true,'mrights')">#{text_select_all}</a> &nbsp; <a href='javascript:void(0)' onclick="checkAll(false,'mrights')">#{text_unselect_all}</a>
+       
+       
+        
+ div.form-group
+   
+      div.col-sm-10
+       input.btn.btn-primary(type='submit' name="submit" placeholder='submit' ng-click='save()' value='Submit')
+       | 
+       input.btn.btn-primary(type='button' name="submit" placeholder='submit' ng-click='cancel()' value='Cancel')

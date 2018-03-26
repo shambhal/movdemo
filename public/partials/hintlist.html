@@ -1,0 +1,24 @@
+<div class="table-responsive">
+                   <table class="table-bordered table table-over">
+                        <tr>
+                          <td>
+                               <input type='checkbox' ng-click='toggleAll()'> </td>
+                           <td> {{hcaptions.column_id}}</td>
+                           <td>{{hcaptions.column_hint}}</td>
+                           <td> {{hcaptions.column_sort_order}}</td>
+                           <td> {{hcaptions.column_action}} </td>
+						  </tr>
+                        
+                         <tr ng-repeat='row in hintarr'>
+                           <td>
+                           <input class="form-control " type='checkbox'   value="{{row._id}}"></td>
+                          <td> {{row.hint}}</td>
+                           <td> {{row.sort_order}}</td>
+                          <td>
+                           <a href='/hint/edit/{{row._id}}'> edit</a>
+						   </td>
+						   </tr>
+						   </table>
+							
+							
+							</div>

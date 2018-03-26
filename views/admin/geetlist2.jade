@@ -1,0 +1,73 @@
+extends widerlayout
+
+block login
+    div(ng-app='app1' ng-controller='listController')
+      div.page-header
+         div.container-fluid
+            div.pull-right
+               a.btn.btn-primary(href='/geet/add/') 
+                  i.fa.fa-plus 
+                |    
+               a.btn.btn-danger(ng-click='delete()'  ng-if='arr')
+                    i.fa.fa-trash-o
+                  
+           
+            div.clearfix
+            
+            
+        div.well
+            div.row
+              div.col-sm-6.col-xs-12    
+                div.form-group
+                   label.control-label Movie Name
+                   md-autocomplete(md-selected-item="item._id" md-search-text="searchText" md-min-length="2" md-items="item in getMatches(searchText)" md-item-text="item._id")
+                     md.item-template
+                        span(md-highlight-text="searchText" md-highlight-flags="^i") {{item._id}}           
+                             
+              div.col-sm-6.col-xs-12        
+                div.form-group
+                  label.control-label Movie Year
+                  input.form-control( name='filter_year' placeholder='Movie Year')
+                  
+                  
+            div.row
+              div.pull-right.col-sm-12
+                input.btn.btn-primary(ng-click='filter()' value='Filter')
+ 
+      div.panel.panel-default
+        div.panel-heading
+          div.panel-title List of Movies
+        div.panel-body(ng-if='arr')  
+           form(name="listform" )
+           input(type='hidden' ng-model='curl' value='{{curl}}')
+           div.table-responsive
+             table.table-bordered.table.table-over
+              tr
+               td
+                   input(type='checkbox' onclick="$('input[name*=\"records\"]').prop('checked', this.checked);")
+               
+               td #{column_movie}
+               td #{column_year}
+               td #{column_action} 
+            
+              tr(ng-repeat="record in arr")  
+               td
+                input(type='checkbox' name="records" value="{{record._id}}"  )
+               td {{record.moviename}} 
+               td {{record.movieyear}} 
+               td 
+                a.btn.btn-primary(href="/hints/{{record._id}}") #{btn_hint} 
+                |  
+                a.btn.btn-primary(href="/geet/edit/{{record._id}}") 
+                     i.fa.fa-edit
+       
+       
+       
+         include ../admin/chunks/paginate
+      
+       
+      
+    
+    script(src='/javascript/geet/geetlistapp.js')
+    script(src='/javascript/geet/geetf.js')
+    script(src='/javascript/geet/geetControllers.js')

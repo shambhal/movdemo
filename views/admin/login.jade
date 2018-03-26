@@ -1,0 +1,32 @@
+extends layout
+
+block login
+ if(errormsg)
+    div.alert.alert-danger
+      p=errormsg
+  
+ form(action='/admin/loginv' method='post')
+
+  div.panel.panel.default
+    div.panel-heading  
+     div.panel-title Please login
+    div.panel-body
+      div.form-group
+       label(for="username") Username
+       div.input-group 
+         span.input-group-addon 
+          i.fa-user.fa
+         input#input-username.form-control(type='text' value="admin" name="username" placeholder="username")
+       
+      div.form-group
+       label(for="input-password") Password
+       div.input-group 
+        span.input-group-addon
+         i.fa-lock.fa
+        input#input-password.form-control(type='password' name="password" value="123456" placeholder="password") 
+      
+      div.text-right 
+      button.btn-primary.btn(type='submit')
+       i.fa.fa-key Login
+       
+       

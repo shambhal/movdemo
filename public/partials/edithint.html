@@ -1,0 +1,46 @@
+<H2>Edit Hint</H2>
+
+<div class='row'>
+<div class='col-md-12 col-sm-12'>
+  <div class='clearfix'></div>
+<div class="alert alert-danger" ng-if="errflag">
+        <div ng-repeat="error in errors"> {{error.msg}} </div>
+		</div>
+       <div class="alert.alert-success" ng-if="sflag"> {{success}} </div>
+
+<form name='editform' novalidate >
+
+<div class="form-group">
+<label class='col-sm-2'>Hint</label>
+<div class='col-sm-10'>
+<textarea name='clue' ng-model='hint.hint' name='clue'' required class='form-control' rows='5'>{{clue}}</textarea> 
+  <div ng-show="editform.clue.$touched || editform.$submitted"> 
+           <span ng-show="editform.clue.$invalid"> Clue is required </span>
+		   </div>
+		  
+</div>
+ <div class='clearfix'></div>
+</div>
+<div class="form-group">
+<label class='col-sm-2'>Order</label>
+<div class='col-sm-10'>
+<input type='text' name='order' required class='form-control' value="{{sort_order}}" ng-model='hint.sort_order' />
+ <div ng-show="editform.order.$touched || editform.$submitted"> 
+           <span ng-show="editform.order.$invalid"> Please enter order </span>
+		   </div>
+<input type='hidden' name='songid' ng-model='hint.songid' required value="{{songid}}" />
+
+</div>
+  <div class='clearfix'></div>
+</div>
+<div class="form-group">
+
+<div class='col-sm-10 pull-right'>
+<input type='button' class='btn btn-primary' ng-click='update()' value='Update' />
+
+</div>
+
+</div>
+</form>
+</div>
+</div>

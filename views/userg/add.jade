@@ -1,0 +1,67 @@
+extends widerlayout
+block login
+  include bread
+ 
+
+  div.panel.panel.default
+   div.panel-heading  
+    div.panel-title Add UserGroup
+    div.panel-body(ng-app="app")
+     
+      form(no-validate ng-controller="addController" name="usergform")
+        div.alert.alert-danger(ng-if="errflag")
+           div(ng-repeat="error in errors") {{error.msg}}
+        div.alert.alert-success(ng-if="sflag") {{success}}
+         
+        div.form-group
+          label.col-sm-2(for="usergname") Group Name
+          div.col-sm-10
+           input#usergname.form-control(type='text' placeholder='User Group Name' name='ugname' required ng-model="userg.name")
+           br
+           div(ng-show="usergform.ugname.$touched || usergform.$submitted") 
+             span(ng-show="usergform.ugname.$invalid") #{error_name}
+        
+        div.form-group
+          label.col-sm-2(for="usergname") Access Rights
+          div.col-sm-10
+               if rights
+                div.scrollbox
+                  for item,index in rights
+                         - var chk=item.route;
+                             p  
+                                if(chk.indexOf(arights)>-1)
+                                 input(type='checkbox' name1='arights#{index}' name="arights" data-val=chk.indexOf(arights)  value=item.route checked='checked')  
+                                else
+                                 input(type='checkbox' name1='arights#{index}' name="arights" data-val=chk.indexOf(arights)   value=item.route )
+                                 
+                                 
+                                span=item.route 
+        div.form-group
+          label.col-sm-2(for="usergname") Modify Rights
+          div.col-sm-10
+              if rights
+                div.scrollbox
+                  for item in rights
+                         - var chk=item.route;
+                             p  
+                                if(chk.indexOf(mrights)>-1 && mrights.length>0 )
+                                 input(type='checkbox' name='mrights' data-index=chk.indexOf(mrights)  value=item.route checked='checked')  
+                                else
+                                 input(type='checkbox' name='mrights'  value=item.route )
+                                 
+                                 
+                                span=item.route 
+            
+            
+           
+           
+           
+           
+            
+        div.form-group
+       
+          div.col-sm-10
+           input.btn.btn-primary(type='submit' name="submit" placeholder='submit' ng-click='save()' value='Submit')
+   script(src='/javascript/userg/usergf.js')
+   script(src='/javascript/userg/userg.js')
+   script(src='/javascript/userg/usergcontrollers.js')      

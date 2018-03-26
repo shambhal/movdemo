@@ -1,0 +1,43 @@
+extends widerlayout
+
+block login
+ 
+ 
+
+  div.panel.panel.default
+    div.panel-heading  
+      div.panel-title Add Song
+        div.panel-body(ng-app="app" ) 
+         form(name="hlistform" ng-controller='hintlist')
+            div.table-responsive
+                   table.table-bordered.table.table-over
+                        tr
+                          td
+                               input(type='checkbox' ng-click='toggleAll()')
+                          td #{column_id}
+                          td #{column_hint}
+                          td #{column_sort_order}
+                          td #{column_action} 
+                        for row,index in arr
+                         tr
+                          td 
+                           input.form-control(type='checkbox' ng-model='hint.delete'  value="#{row._id}")
+                          td #{row.hint}
+                          td #{row.sort_order}
+    
+    
+    
+    
+
+    if pages
+     ul.pagination
+        each page in pages
+         li
+         if page.number==currentPage
+          a.btn.btn-default.active(href=page.url) #{page.number}
+         else
+          a.btn.btn-default(href=page.url) #{page.number}
+
+  script(src='/javascript/geethint.js')
+  script(src='/javascript/hintf.js')
+  script(src='/javascript/hintcontrollers.js')

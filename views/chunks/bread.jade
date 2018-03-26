@@ -1,0 +1,6 @@
+h1 #{title}
+if breadcrumbs
+ ul.breadcrumb
+ for b in breadcrumbs
+   li
+     a(href=b.href)=b.text

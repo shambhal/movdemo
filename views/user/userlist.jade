@@ -1,0 +1,57 @@
+extends ../widerlayout
+
+block login
+    
+   div(ng-app="app" )
+     div#holder( ng-controller='listController' ng-init='mode=list;' )
+      include ../chunks/bread
+      div.pull-right
+        button.btn.btn-primary(ng-click='addd()')
+          i.fa.fa-plus
+        |      
+        a.btn.btn-danger(ng-click='deletee()' )
+          i.fa.fa-trash 
+      div(style='clear:right')
+      div.alert.alert-danger(ng-if="errflag")
+               div(ng-repeat="error in errors") {{error}}
+      div.alert.alert-success(ng-if="sflag") {{success}}
+      div.panel.panel.default
+        div.panel-heading  
+          div.panel-title User  List
+            div.panel-body() 
+             div#cot
+             
+             
+             
+             
+             
+                form()
+                 div.table-responsive(ng-show='records')
+                       table.table-bordered.table.table-over
+                            tr
+                              td
+                                   input(type='checkbox' ng-click='toggleAll()')
+                            
+                              td #{column_name}
+                              td #{column_usergname}
+                              td
+                            tr(ng-repeat="record in records")  
+                              td
+                                   input(type='checkbox' name="reco" value="{{record._id}}"  )
+                              td {{record.name}}
+                              td {{record.ugname}}
+                              td
+                                 button.btn.btn-primary(href='user/edit/{{record._id}}' ng-click="eedit(record._id)") 
+                                       i.fa.fa-pencil
+        
+        
+                include ../admin/chunks/paginate
+               
+        
+                div#addchunk(ng-show='mode=="edit" || mode=="add"')
+                 include adduser.jade
+        
+
+      script(src='/javascript/user/user.js')
+      script(src='/javascript/user/userf.js')
+      script(src='/javascript/user/usercontrollers.js')

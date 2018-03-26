@@ -1,0 +1,54 @@
+extends widerlayout
+
+block login
+ 
+   div.page-header(ng-app="app" ng-controller="groupController" )
+     div.container-fluid
+            div.pull-right
+               a.btn.btn-primary(ng-click='addd()') 
+                  i.fa.fa-plus   
+                a.btn.btn-danger(ng-click='deletee()'  ng-if='records')
+                    i.fa.fa-trash-o
+                  
+           
+            div.clearfix
+
+     div.panel.panel.default()
+           div.panel-heading  
+            div.panel-title Hint List #{song.mukhda}
+             div.panel-body
+               div.table-responsive(ng-if='records')
+                  table.table-bordered.table.table-over
+                   tr
+                     td
+                       input(type='checkbox' onclick="$('input[name*=\"reco\"]').prop('checked', this.checked);")
+                     td Hint
+                     td Sort Order
+                     td Action
+                   tr(ng-repeat="record in records") 
+                       td 
+                         input( type='checkbox' name='reco' value='{{record._id}}')                
+                       td {{record.hint}}
+                       td {{record.sort_order}}
+                       td 
+                         a.btn.btn-primary(ng-click="eedit(record._id)") Edit
+                
+                div(ng-if="!records")      
+                      No Hints Found
+                      
+      div#edit-hint(ng-show='edit==1 || add==1' ng-init='edit=0;add=0')
+             include chunks/edithint.html
+              
+           
+              
+               
+               
+             
+               
+               
+              
+     script.
+      var songid='#{song.songid}';var mukhda='#{song.mukhda}';
+     script(src='/javascript/geethint.js')
+     script(src='/javascript/hintf.js')
+     script(src='/javascript/hintcontrollers.js')

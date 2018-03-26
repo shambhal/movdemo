@@ -1,0 +1,33 @@
+form.form-horizontal(no-validate  name="usergform")
+       
+        div.form-group
+          label.col-sm-2(for="usergname")  Name
+          div.col-sm-10
+           input#ugname.form-control(type='text' placeholder='Username' name='ugname'  required ng-model="userg.name")
+           br
+           div(ng-show="usergform.ugname.$touched || usergform.$submitted") 
+             span(ng-show="usergform.ugname.$invalid") #{error_name}
+        
+        div.form-group
+          label.col-sm-2(for="password")  Password
+          div.col-sm-10
+           input#userpwd.form-control(type='password' placeholder='Password' name='password' required ng-model="userg.password")
+           br
+           div(ng-show="usergform.password.$touched || usergform.$submitted") 
+             span(ng-show="usergform.userpwd.$invalid") #{error_password}
+        div.form-group
+          label.col-sm-2(for="ugroup")  Usergroup
+          div.col-sm-10
+           select#usergname.form-control(ng-model="userg.userg_id"  ng-optionfs=" item as ug.name for  ug in ugs  track by ug._id" ng-changes="save2()" required="true"  name="usergroup" )
+              option(ng-repeat="ug in ugs" value="{{ug._id}}")
+                {{ug.name}}
+           br
+           div(ng-show=" usergform.$submitted") 
+             span(ng-show="usergform.usergroup.$invalid") #{error_usergroup}
+            
+        div.form-group
+       
+          div.col-sm-10
+           input.btn.btn-primary(type='submit' name="submit" placeholder='submit' ng-click='save()' value='Submit')
+           |  
+           input.btn.btn-primary(type='button' name="submit" placeholder='submit' ng-click='cancel()' value='Cancel')

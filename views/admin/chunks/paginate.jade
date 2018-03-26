@@ -1,0 +1,17 @@
+div( ng-showd="pagination.pages")
+   ul.pagination
+          li(ng-if='pagination.prev')
+              a(href='{{pagination.prev}}')
+                Previous
+          li(ng-repeat="page in pagination.pages")
+                   a.pn( ng-if="page.onc && page.show" href='javascript:void(0);' ng-click="pagec(page)")
+                      {{page.number}}
+                   a(ng-if="!page.onc && page.show" href="{{page.url}}")
+                       {{page.number}}
+                   span(ng-if="!page.show")
+                       {{page.number}}                 
+          li(ng-if='pagination.next')
+              a(href='{{pagination.next}}')
+                Next
+script
+                      

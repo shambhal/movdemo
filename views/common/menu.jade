@@ -1,0 +1,46 @@
+nav#column-left
+          ul#menu
+            li#dashboard
+             a(href='/geet/add')
+              i.fa.fa-dashboard
+          
+            li#song
+              a.parent
+                i.fa.fa-camera
+                span 
+                  Songs
+               
+              ul
+                li  
+                   a( href='/geet/list')              List
+                 
+                li
+                   a( href='/geet/add')             Add
+                    
+                
+            
+                
+            li#userg
+                a.parent
+                  i.fa.fa-user
+                  span
+                     User Groups
+                ul
+                 li
+                   a(href='userg/list') List    
+                  
+                   
+            li#user
+              a.parent
+                  i.fa.fa-user-secret
+                  span
+                     Users
+              ul
+                 li
+                  a(href='user/list')              List    
+                 li
+                  a(href='user/add')                Add
+                  
+            li#logout     
+             a( href='/logout')
+              i.fa.fa-lock

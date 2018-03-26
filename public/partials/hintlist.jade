@@ -1,0 +1,17 @@
+ div.table-responsive
+                   table.table-bordered.table.table-over
+                        tr
+                          td
+                               input(type='checkbox' ng-click='toggleAll()')
+                          td {{column_id}}
+                          td {{column_hint}}
+                          td {{column_sort_order}}
+                          td {{column_action}} 
+                        
+                         tr(ng-repeat='row in records')
+                          td 
+                           input.form-control(type='checkbox'   value="{{row._id}}")
+                          td {{row.hint}}
+                          td {{row.sort_order}
+                          td.
+                            a(href='/hint/edit/{{row._id}}') edit

@@ -1,0 +1,44 @@
+doctype
+html(ng-app='app1')
+
+  head
+    title= title
+    base(href='/')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/stylesheet.css')
+    script(src='/jquery/jquery-2.1.1.min.js',type='text/javascript')
+    script(src='/bootstrap/js/bootstrap.min.js',type='text/javascript')
+    script(src='/angular/angular.js',type='text/javascript')
+    if csarr
+     for cs in csarr
+      link(href=cs, rel='stylesheet') 
+    if jsarr
+     for js in jsarr
+       script(src=js,  type='text/javascript')  
+  body
+    div#container
+      nav#column-left
+         ul#menu
+          li#dashbard
+           a(href="geet/add")
+            i.fa.fa-dashboard
+          
+          li#song
+           a.parent
+            i.fa.fa-camera
+           ul
+            li 
+             a(href='/geet/') Songs
+             
+            
+       
+       div#content
+        div.container-fluid
+         div.row
+          div.col-sm-12
+            block login
+    
+    script(src='/javascript/geetapp.js')
+    script(src='/javascript/geetf.js')
+    script(src='/javascript/geetControllers.js')

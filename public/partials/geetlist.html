@@ -1,0 +1,76 @@
+<div class='well'>
+ <div class='row'>
+       <div class='col-sm-6'>
+                <div class="form-group">
+				 <label class="control-label"> Movie Name </label>
+				 <md-autocomplete md-selected-item="item._id" md-search-text="searchText" md-min-length="2" md-items="item in getMatches(searchText)" md-item-text="item._id" >
+				 <md-item-template>
+                  <span md-highlight-text="searchText" md-highlight-flags="^i"> {{item._id}} </md-item-template>
+				 </md-autocomplete>
+				
+           </div>
+ 
+  </div>
+  <div class='col-sm-6'>
+     <div class="form-group">
+	    <label class='control-label'>Year</label>
+	      <input class="form-control" name='filter_year' placeholder='Movie Year' />
+	 </div>
+  
+  </div>
+  </div>
+  <div class='row'>
+  <div class='com-md-12 pull-right'>
+   <button class='btn btn-primary' ng-click='filter()'>Filter</button>
+  
+  </div>
+  
+  
+  </div>
+
+</div>
+
+<div class=="panel panel.default">
+   <div class="panel-heading">  
+    <div class="panel-title"> List of songs</div>
+	</div>
+	
+     <div  class="panel-body">
+
+      <form name="listform" >
+        <input type='hidden' ng-model='curl' value='{{curl}}' />
+        <div class="table-responsive">
+             <table  class="table-bordered table table-over">
+              <tr>
+               <td>
+                   <input type='checkbox' onclick="$('input[name*=\"records\"]').prop('checked', this.checked);" /></td>
+               
+               <td> #{column_mukhda}</td>
+               <td> #{column_year}</td>
+               <td> #{column_action} </td>
+			   </tr>
+            
+              <tr ng-repeat="record in arr") > 
+               <td>
+                <input type='checkbox' name="records" value="{{record._id}}"  />
+				</td>
+               <td> {{record.mukhda}} </td>
+              <td>{{record.movieyear}} </td>
+               <td>
+                <a class="btn.btn-primary "href="/hints/{{record._id}}"> Hints </td>
+				</tr>
+				</table>
+				</div>
+				</form>
+				<div ng-if="pagination.pages">
+		            <ul class='pagination'> 
+					<li ng-if='pagination.prev'> <a href='{{pagination.prev}}'>Previous</a> </li>
+					<li ng-repeat="page in pagination.pages">
+					<a href="{{page.url}}" >{{page.number}}</a>
+					</li>
+					<li ng-if='pagination.next'> <a href='{{pagination.next}}'>Next</a> </li>
+					</ul>		
+					
+					</div>
+				</div>
+</div>				

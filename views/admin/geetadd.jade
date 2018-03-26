@@ -1,0 +1,72 @@
+extends widerlayout
+
+block login
+      div.page-header
+        div.container-fluid
+               h1 #{title}
+           if breadcrumbs
+           ul.breadcrumb
+           for b in breadcrumbs
+            li
+              a(href=b.href)=b.text
+    
+      div.panel.panel.default
+       div.panel-heading  
+        div.panel-title #{title}
+         div.panel-body(ng-app="app")
+              div(ng-controller="songc")
+               form.form-horizontal(novalidate  name="gform")
+                div.alert.alert-danger(ng-if="errflag")
+                   div(ng-repeat="error in errors") {{error.msg}}
+                div.alert.alert-success(ng-if="sflag") {{success}}
+                 
+
+                
+                div.form-group
+                  label.col-sm-2(for="movieyear") #{entry_movie_year}
+                  div.col-sm-10
+                   input#movieyear.form-control(type='text' name="movieyear" placeholder='movieyear' required ng-model='song.movieyear')
+                   p
+                   div(ng-show="gform.movieyear.$touched || gform.$submitted") 
+                    span.alert-danger(ng-show="gform.movieyear.$invalid || gform.movieyear.$error.required") #{entry_year}
+
+                div.form-group
+                  label.col-sm-2(for="movie-name") #{entry_movie_name }
+                  div.col-sm-10
+                   input#movie-name.form-control(type='text' name="moviename" placeholder='moviename'  ng-model='song.moviename')  
+                   p
+                   div(ng-show="gform.moviename.$touched || gform.$submitted") 
+                    span.alert-danger(ng-show="gform.moviename.$invalid") #{error_movie_name}
+                  
+                div.form-group
+                  label.col-sm-2(for="movie-name") #{entry_level }
+                  div.col-sm-10
+                   input#movie-name.form-control(type='text' name="level" placeholder='1' required ng-model='song.level')  
+                   br
+                   div(ng-show="gform.level.$touched || gform.$submitted") 
+                    span.alert-danger.help-block(ng-show="gform.level.$invalid  ") #{error_movie_name}
+                   
+                   
+                div.form-group
+                  label.col-sm-2(for="song-translation") #{entry_translation}
+                  div.col-sm-10
+                   textarea#song-translation.form-control(rows='5' cols='50' name="translation" required="" ng-model='song.translation' placeholder='translation')
+                   div(ng-show="gform.translation.$touched || gform.$submitted") 
+                    span.alert-danger(ng-show="gform.translation.$invalid") #{error_translation}
+           
+                div.form-group
+               
+                  div.col-sm-10
+                   input.btn.btn-primary(type='submit'  placeholder='submit' ng-click='save()' value='Submit')
+                 
+         if (edit==1)
+           script                 
+             | var songid='#{songid}';
+             | edit=1;
+         else
+          script var edit=0;
+
+        script(src='/javascript/geet/geetf.js')
+        script(src='/javascript/geetadd.js')
+            
+               

@@ -1,0 +1,44 @@
+extends widerlayout
+
+block login
+ 
+ 
+
+  div.panel.panel.default
+   div.panel-heading  
+    div.panel-title Add Song
+     div.panel-body(ng-app="app" ) 
+      form(name="hlistform" ng-controller='hintl')
+     
+        div.well
+         div(ng-show="arrs.length")
+           input.btn.btn-alert(type='button' ng-click='delete()' value='Delete')
+        div.table-responsive
+         table.table-bordered.table.table-over
+          tr
+           td
+            input(type='checkbox' onclick="$('input[name*=\"records\"]').prop('checked', this.checked);")
+           td #{column_id} 
+           td #{column_hint}
+           td #{column_sort_order}
+           td #{column_action} 
+        
+          tr(ng-repeat="record in arr")  
+           td
+            input(type='checkbox' name="records" value="{{record._id}}" ng-model='dels' )
+           td {{record.hint}}
+           td {{record.sort_order}} 
+           td 
+            a.btn.btn-primary(href="/hints/{{record._id}}") 
+   
+       //////////////////////////////////////
+       
+       
+     
+       
+       
+      
+    
+    script(src='/javascript/geethint.js')
+    script(src='/javascript/hintf.js')
+    script(src='/javascript/hintcontrollers.js')
