@@ -1,21 +1,24 @@
 {
-  "name": "mov",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
+"name":"mov",
+"version":"0.0.1",
+"scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "connect-mongo": "^2.0.1",
     "express": "^3.2.6",
-    "express-fileupload": "^0.3.0",
 	"express-validator": "^3.2.0",
     "http": "0.0.0",
     "jade": "*",
     "merge": "^1.2.0",
-    "mongoose-paginate": "^5.0.3"
-	"cors": "^2.8.4",
+    "mongoose-paginate": "^5.0.3",
+
 	"mongoose":"^4.10.8",
-	"formidable":"4.10.8",
-  }
-}
+	"formidable":"4.10.8"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "author": "shambhal"
+ }
