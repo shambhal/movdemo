@@ -16,8 +16,8 @@ var express = require('express')
      , geet = require('./routes/geet'),
 	 //passport =require("passport-http"),
 	// bstrategy= require('passport-http').BasicStrategy,
-	 acl=require('acl'),
-	 cors = require('cors'),
+	 acl=require('shambacl'),
+	/* cors = require('cors'),*/
 	
      hint=require('./routes/hints')
   , user = require('./routes/user')
