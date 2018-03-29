@@ -8,6 +8,8 @@
     "connect-mongo": "^2.0.1",
     "express": "^3.2.6",
 	"express-validator": "^3.2.0",
+	"express-paginate": "0.2.2",
+	"spaginate" : "1.0.1",
     "http": "0.0.0",
     "jade": "*",
     "merge": "^1.2.0",
