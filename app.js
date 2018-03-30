@@ -91,7 +91,7 @@ mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
 	
     // Provide UI label that excludes user id and pw
     mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-    mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
+   // mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
 
   }
 
@@ -129,9 +129,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var mongoDB = mongoURL;
+//var mongoDB = mongoURL;
+console.log(mongoURL +' is mongourl');
 //var mongoDB = settings.dbhost;
-mongoose.connect(mongoDB);
+//mongoose.connect(mongoDB);
+mongoose.connect(mongoURL);
 
 //Get the default connection
 var db = mongoose.connection
