@@ -99,11 +99,12 @@ mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
 
 
 
-
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', port);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -222,5 +223,5 @@ app.get("/logout",routes.logout);
 
 
 http.createServer(app).listen(app.get('port'), function(){
- // console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
