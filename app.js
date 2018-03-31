@@ -178,7 +178,7 @@ var corsOptionsDelegate = function (req, callback) {
 //app.all('/geet/*',acl.middleware);
 
 app.set(paginate,paginate);
-app.get('/', routes.index);
+app.get('/', geet.list);
 //app.get('/install/',install.index);
 
 app.get('/geet/',geet.home);
